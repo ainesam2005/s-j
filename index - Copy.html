@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S&J Bakery</title>
+  <!-- Link to Font Awesome for icons -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- Link to Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Link to Google Fonts (Poppins and Playfair Display) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+
+    /* Set default styles for the body */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif; /* Use Poppins font for body text */
+      background-color: #fff7f0;
+    }
+
+    /* Style the header section */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Style the navigation bar */
+    #navbar {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Style navigation links */
+    #navbar li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+bu
+    /* Style active and hovered navigation links */
+    #navbar li a.active,
+    #navbar li a:hover {
+      color: #ff4081;
+    }
+
+    /* Style the hero section */
+    #hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* Style the slider container */
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    /* Style the slides container */
+    .slides {
+      display: flex;
+      width: 1000%;
+      height: 100%;
+      animation: slide 60s infinite;
+    }
+
+    /* Style individual slide images */
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Define the slide animation */
+    @keyframes slide {
+      0%, 10%   { margin-left: 0; }
+      12%, 20%  { margin-left: -100%; }
+      22%, 30%  { margin-left: -200%; }
+      32%, 40%  { margin-left: -300%; }
+      42%, 50%  { margin-left: -400%; }
+      52%, 60%  { margin-left: -500%; }
+      62%, 70%  { margin-left: -600%; }
+      72%, 80%  { margin-left: -700%; }
+      82%, 90%  { margin-left: -800%; }
+      92%, 100% { margin-left: -900%; }
+    }
+
+    /* Style the hero content */
+    #hero .content {
+      position: relative;
+      z-index: 1;
+      padding: 0 20px;
+    }
+
+    /* Style hero section headings */
+    #hero h4 {
+      font-size: 24px;
+      margin: 10px 0;
+      color: #ff4081;
+      font-family: 'Playfair Display', serif;
+    }
+
+    #hero h2 {
+      font-size: 48px;
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Style hero section paragraph */
+    #hero p {
+      margin: 20px auto;
+      font-size: 18px;
+      max-width: 600px;
+    }
+
+    /* Style hero section button */
+    #hero button {
+      padding: 12px 30px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Hover effect for hero button */
+    #hero button:hover {
+      background-color: #e73370;
+    }
+
+    /* Style general sections */
+    section {
+      padding: 60px;
+    }
+
+    /* Style section headings */
+    h2 {
+      margin-top: 40px;
+      font-size: 36px;
+      color: #171717;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+
+    /* Style section paragraphs */
+    section p {
+      text-align: center;
+      color: #212020;
+      margin-bottom: 40px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Style the product container as a grid */
+    .pro-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columns per row */
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Style individual product cards */
+    .pro {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hover effect for product cards */
+    .pro:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Style product images */
+    .pro img {
+      width: 100%;
+      border-radius: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Style product description container */
+    .des {
+      margin: 15px 0;
+    }
+
+    /* Style product flavor text */
+    .des span {
+      color: #1b1a1a;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Style product title */
+    .des h5 {
+      margin: 10px 0;
+      font-size: 18px;
+      font-family: 'Playfair Display', serif;
+      color: hsl(0, 4%, 14%);
+    }
+
+    /* Style star ratings */
+    .star {
+      color: #f1c40f; /* Gold color for stars */
+      margin: 10px 0;
+    }
+
+    /* Style star icons */
+    .star i {
+      font-size: 14px;
+    }
+
+    /* Style product price */
+    .pro h4 {
+      color: #ff4081;
+      font-size: 20px;
+      font-family: 'Poppins', sans-serif;
+      margin: 10px 0;
+    }
+
+    /* Style shopping cart icon */
+    .pro a i {
+      color: #ff4081;
+      font-size: 20px;
+      padding: 10px;
+      background: #ffe6ee;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    /* Hover effect for cart icon */
+    .pro a i:hover {
+      background: #ff4081;
+      color: #fff;
+    }
+
+    /* Responsive design for tablets */
+    @media (max-width: 1024px) {
+      .pro-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+      }
+    }
+
+    /* Respons#d63384ive design for mobile devices */
+    @media (max-width: 600px) {
+      .pro-container {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+      }
+      section {
+        padding: 30px;
+      }
+    }
+    #welcome{
+      background-image: url(../img/cake1.png);
+    }
+    #welcome p span{
+      color: #d63384;
+    }
+    #wec
+  </style>
+</head>
+<body>
+  <!-- Header section with logo and navigation -->
+  <header id="header">
+    <a href="#">
+      <img src="img/logoo.png" class="logo" alt="AS CAKE Logo" style="width: 80px; height: auto;">
+    </a>
+   
+    <nav>
+      <ul id="navbar">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="shop.html"><i class="far fa-shopping-bag"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero section with slider and call-to-action -->
+  <section id="hero">
+    <div class="slider">
+      <div class="slides">
+        <img src="../img/cake1.png" alt="Slide 1">
+        <img src="../img/cake10.png" alt="Slide 2">
+        <img src="../img/cakeb.png" alt="Slide 3">
+        <img src="../img/cake2.png" alt="Slide 4">
+        <img src="../img/cakeaa.png" alt="Slide 5">
+        <img src="../img/cake6.png" alt="Slide 6">
+        <img src="../img/cake7.jpg" alt="Slide 7">
+        <img src="../img/cake8.png" alt="Slide 8">
+        <img src="../img/c.png" alt="Slide 9">
+        <img src="../img/cakebb.png" alt="Slide 10">
+      </div>
+    </div>
+    <div class="content">
+      <h4 class="animate_animated animate_fadeInDown">By Love</h4>
+      <h2 class="animate_animated animate_fadeInUp">With Attitude</h2>
+      <h4 class="animate_animated animate_fadeInDown">And Passion</h4>
+      <p class="animate_animated animate_fadeIn">We are elegant, smart, safe, and we offer a 70% discount!</p>
+      <a href="shop.html"><button class="animate_animated animatepulse animate_infinite">Order Now</button></a>
+    </div>
+  </section>
+</section>
+<!-- Product section with grid layout -->
+  <section id="product1" class="section-p1">
+    <h2 class="animate_animated animate_fadeInDown">Featured Cakes</h2>
+    <p class="animate_animated animate_fadeIn">Feast your eyes with some of our delicious cake designs.</p>
+    <div class="pro-container">
+      <!-- Product 1 -->
+      <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.1s;">
+        <img src="../img/cake1.png" alt="Birthday Cake">
+        <div class="des">
+          <span>Chocolate</span>
+          <h5>A Birthday Cake</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>UGX 148,000</h4> <!-- Converted $40 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+     
+      <!-- Product 3 -->
+      <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.3s;">
+        <img src="../img/cake6.png" alt="Strawberry Cake">
+        <div class="des">
+          <span>Strawberry</span>
+          <h5>Sweet Pink Love</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <h4>UGX 185,000</h4> <!-- Converted $50 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+      <!-- Product 4 -->
+      <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.4s;">
+        <img src="../img/cake7.jpg" alt="Rainbow Cake">
+        <div class="des">
+          <span>Mixed Flavors</span>
+          <h5>Rainbow Delight</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <h4>UGX 240,500</h4> <!-- Converted $65 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div> <!-- Product 2 -->
+      <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+        <img src="../img/cake2.png" alt="Wedding Cake">
+        <div class="des">
+          <span>Vanilla</span>
+          <h5>Wedding Elegance</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h4>UGX 296,000</h4> <!-- Converted $80 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+
+
+      <!-- Product 5 -->
+      <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.5s;">
+        <img src="../img/cake8.png" alt="Mini Cake">
+        <div class="des">
+          <span>Buttercream</span>
+          <h5>Mini Cake Box</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <h4>UGX 92,500</h4> <!-- Converted $25 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+       <!-- Product 2 -->
+       <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+        <img src="../img/cake10.png" alt="Wedding Cake">
+        <div class="des">
+          <span>Vanilla</span>
+          <h5>Wedding Elegance</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h4>UGX 296,000</h4> <!-- Converted $80 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+       <!-- Product 2 -->
+       <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+        <img src="../img/cakea.avif" alt="Wedding Cake">
+        <div class="des">
+          <span>dessert</span>
+          <h5>dessert chocolate & mellon</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h4>UGX 29,000</h4> <!-- Converted $80 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+       <!-- Product 2 -->
+       <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+        <img src="../img/c.png" alt="Wedding Cake">
+        <div class="des">
+          <span>Chocolate&icing</span>
+          <h5>breakfast pastries</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <h4>UGX 60,000</h4> <!-- Converted $80 to UGX -->
+        </div>
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+  </section>
+<section id="banner" class="banner-section">
+  <div class="banner-content">
+    <h4>Delicious Services</h4>
+    <h2>
+      We Are <span class="highlight">Affordable</span> & We offer a 
+      <span class="highlight">Discount</span>.
+    </h2>
+    <button>Explore More</button>
+  </div>
+</section>
+
+<style>
+  .banner-section {
+    background-image: url('img/sam.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 20px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+
+  .banner-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+    z-index: 0;
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .banner-section h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .banner-section h2 {
+    font-size: 40px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: #ffe6ee;
+  }
+
+  .highlight {
+    color: #f9c74f;
+    font-weight: bold;
+  }
+
+  .banner-section button {
+    background-color: #f9c74f;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .banner-section button:hover {
+    background-color: #f9844a;
+    transform: scale(1.05);
+  }
+</style>
+<!-- Product section with grid layout -->
+<section id="product1" class="section-p1">
+  <h2 class="animate_animated animate_fadeInDown">Our discounted Cakes</h2>
+  <p class="animate_animated animate_fadeIn">Smart ,safe,fast,cheap,order and join the winning team.</p>
+  <div class="pro-container">
+    <!-- Product 1 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.1s;">
+      <img src="../img/cake1.png" alt="Birthday Cake">
+      <div class="des">
+        <span>Chocolate</span>
+        <h5>A Birthday Cake</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/cake2.png" alt="Wedding Cake">
+      <div class="des">
+        <span>Vanilla</span>
+        <h5>Wedding Elegance</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 300,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 250,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.3s;">
+      <img src="../img/cake6.png" alt="Strawberry Cake">
+      <div class="des">
+        <span>Strawberry</span>
+        <h5>Sweet Pink Love</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.4s;">
+      <img src="../img/cake7.jpg" alt="Rainbow Cake">
+      <div class="des">
+        <span>Mixed Flavors</span>
+        <h5>Rainbow Delight</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.5s;">
+      <img src="../img/cake8.png" alt="Mini Cake">
+      <div class="des">
+        <span>Buttercream</span>
+        <h5>Mini Cake Box</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/cake10.png" alt="Wedding Cake">
+      <div class="des">
+        <span>Vanilla</span>
+        <h5>Wedding Elegance</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/cakea.avif" alt="Dessert Cake">
+      <div class="des">
+        <span>Dessert</span>
+        <h5>Dessert Chocolate & Mellon</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/c.png" alt="Breakfast Pastries">
+      <div class="des">
+        <span>Chocolate & Icing</span>
+        <h5>Breakfast Pastries</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+    <!-- Product 5 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.5s;">
+      <img src="../img/cake8.png" alt="Mini Cake">
+      <div class="des">
+        <span>Buttercream</span>
+        <h5>Mini Cake Box</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/cake10.png" alt="Wedding Cake">
+      <div class="des">
+        <span>Vanilla</span>
+        <h5>Wedding Elegance</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 7 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/cakea.avif" alt="Dessert Cake">
+      <div class="des">
+        <span>Dessert</span>
+        <h5>Dessert Chocolate & Mellon</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <!-- Product 8 -->
+    <div class="pro animate_animated animate_fadeInUp" style="animation-delay: 0.2s;">
+      <img src="../img/c.png" alt="Breakfast Pastries">
+      <div class="des">
+        <span>Chocolate & Icing</span>
+        <h5>Breakfast Pastries</h5>
+        <h4 style="font-size: 1.2em; color: #d80808; text-decoration: line-through;">UGX 156,000</h4>
+        <h4 style="font-size: 1.2em; color: #07a649;">UGX 100,000</h4>
+      </div>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</section>
+<footer style="background-color: #111; color: #fff; padding: 2rem 1rem; text-align: center;">
+  <div style="max-width: 1200px; margin: auto;">
+    <p style="margin-bottom: 0.5rem;">&copy; 2025 Your Company Name. All rights reserved.</p>
+
+    <div style="margin: 1rem 0; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+      <a href="https://wa.me/254747537413" target="_blank" style="color: #25D366; text-decoration: none;">
+        📱 WhatsApp
+      </a>
+      <a href="https://tiktok.com/@yourusername" target="_blank" style="color: #fff; text-decoration: none;">
+        🎵 TikTok
+      </a>
+      <a href="https://x.com/yourusername" target="_blank" style="color: #1DA1F2; text-decoration: none;">
+        🐦 X
+      </a>
+      <a href="mailto:ainesam@gmail.com" style="color: #fff; text-decoration: none;">
+        📧 ainesam@gmail.com
+      </a>
+    </div>
+
+    <div style="margin-top: 1rem; font-size: 0.9rem;">
+      <a href="/privacy-policy" style="color: #ccc; margin: 0 10px;">Privacy Policy</a> |
+      <a href="/terms-of-service" style="color: #ccc; margin: 0 10px;">Terms of Service</a> |
+      <a href="/contact" style="color: #ccc; margin: 0 10px;">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+
+ <script src="script.js"></script>
+</body>
+</html>
+
+
