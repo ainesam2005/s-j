@@ -1,79 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-<meta charset="UTF-8">
-<meta name="viewport"content="width=device-width, intial-scale=1.0">
-<title>Contact Us</title>
-<style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - S&J Bakery</title>
+  <style>
     body {
-font-family:'Poppins',sans-serif;
-background:#975838;
-margin:0;
-padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #975838;
+      margin: 0;
+      padding: 0;
     }
-    .contact-container{
-        width: 80%;
-        max-width: 800px;
-        margin: 50px auto;
-        background: #ccd2bb;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,1);
- }
- .contact-container h2 {
-text-align: center;
-margin-bottom: 20px;
-color: #333;
- }
- .contact-container from {
-    display: flex;
-    flex-direction: column;
- }
- .contact-container label{
-    margin: 10px 0 5px;
-    font-weight: 600;
- }
- .contact-container input,
- .contact-container textarea{
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size:16px; 
-    width: 100%; 
+    .contact-container {
+      width: 80%;
+      max-width: 700px;
+      margin: 50px auto;
+      background: #ccd2bb;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.8);
     }
-    .contact-container textarea{
-        resize: vertical;
-        min-height: 120px;
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
     }
-    .contact-container button{
-        margin-top: 15px;
-        padding: 12px;
-        background: #ff6600;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background o.3s;
+    .contact-container form {
+      display: flex;
+      flex-direction: column;
     }
-    .contact-container button:hover{
-        background: #e65c00;
+    .contact-container label {
+      margin: 10px 0 5px;
+      font-weight: 600;
     }
-</style>
+    .contact-container input,
+    .contact-container textarea {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+    }
+    .contact-container textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-container button {
+      margin-top: 15px;
+      padding: 14px;
+      background: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-container button:hover {
+      background: #e65c00;
+    }
+    .back-link {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .back-link a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    /* Success / error message */
+    #form-message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+    }
+    #form-message.success {
+      color: green;
+    }
+    #form-message.error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-    <div class="contact-container">
-<h2>Contact Us</h2>
-<form action="mail to:ainesam2005@gmail.com" method="post" enctype="text/plain">
-    <label for="name">S&J Bakery</label>
-    <input type=" text" id="name" name="name" placeholder="Enter your name"required>
-    <label for="email">ainesam2005@gmail.com</label>
-    <input type="email"id="email"name="email" placeholder="Enter your email"required>
-    <label for="message">Place your order</label>
-    <textarea name="place your order" id="place your order" placeholder="Place your order......."required></textarea>
-    <a href="index.html">back</a>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
 
-    <button type="submit">Send order</button>
-</form>
+    <!-- Connected to your Formspree ID -->
+    <form id="contact-form" action="https://formspree.io/f/mldwqowo" method="POST">
+      <input type="hidden" name="_subject" value="New Order from S&J Bakery">
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="order">Place Your Order</label>
+      <textarea id="order" name="order" placeholder="Write your order here..." required></textarea>
+
+      <button type="submit">Send Order</button>
+    </form>
+
+    <p id="form-message"></p>
+
+    <div class="back-link">
+      <a href="index.html">← Back to Home</a>
     </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const message = document.getElementById("form-message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          message.textContent = "🎉 Order sent successfully!";
+          message.className = "success";
+          message.style.display = "block";
+          form.reset();
+        } else {
+          message.textContent = "⚠️ Something went wrong. Please try again.";
+          message.className = "error";
+          message.style.display = "block";
+        }
+      } catch (error) {
+        message.textContent = "❌ Network error. Please check your internet.";
+        message.className = "error";
+        message.style.display = "block";
+      }
+    });
+  </script>
 </body>
+</html>
